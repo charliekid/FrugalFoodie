@@ -14,10 +14,16 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
-    <TextView
-        android:id="@+id/hello"
+    <Button
+        android:id="@+id/upload"
         android:layout_width="match_parent"
-        android:layout_height="156dp"
-        android:text="Hi" />
+        android:layout_height="wrap_content"
+        android:text="Upload Recipe" />
+
+    <Button
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search By Ingredient" />
 
 </LinearLayout>
