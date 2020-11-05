@@ -2,6 +2,7 @@ package com.example.frugalfoodie;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 
 
@@ -104,5 +105,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public static Intent getIntent(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        return intent;
     }
 }

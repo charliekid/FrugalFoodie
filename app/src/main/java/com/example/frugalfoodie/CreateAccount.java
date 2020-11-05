@@ -71,8 +71,8 @@ public class CreateAccount extends AppCompatActivity {
             Toast t = Toast.makeText(getApplicationContext(), "Signup successful", Toast.LENGTH_SHORT);
             t.setGravity(Gravity.BOTTOM, 0, 0);
             t.show();
-//            Intent intent = MainActivity.getIntent(getApplicationContext());
-//            startActivity(intent);
+            Intent intent = MainActivity.getIntent(getApplicationContext());
+            startActivity(intent);
         }
         if (username.isEmpty()) {
             activityCreateAccountBinding.createAccountUsername.setError("Please enter a username");
