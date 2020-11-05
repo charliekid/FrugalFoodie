@@ -6,10 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.frugalfoodie.databinding.ActivityCreateAccountBinding;
+
 public class CreateAccount extends AppCompatActivity {
 
-//    private ActivityCreateAccountBinding activityCreateAccountBinding;
-//
+    private ActivityCreateAccountBinding activityCreateAccountBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
