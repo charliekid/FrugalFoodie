@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @Entity(tableName = FFRoom.RECIPE_TABLE)
 public class Recipe {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int recipeID;
     private String recipeName;
     private String directions;
