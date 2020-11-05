@@ -43,7 +43,7 @@ Notes:
 > As a user, I want to be able to create a new account so that I can use that I can use the app
 
 **How will it be tested**:
-- [ ] Test to see if user account gets added into the DAO
+- [x] Test to see if user account gets added into the DAO
 
 Notes: 
 - Needed for new users, second highest priority 
