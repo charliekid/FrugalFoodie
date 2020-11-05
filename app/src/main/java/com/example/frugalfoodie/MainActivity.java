@@ -2,6 +2,7 @@ package com.example.frugalfoodie;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 
 
@@ -39,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //TODO: Ask why this is giving an error.
+//        setSupportActionBar(toolbar);
 
         //TODO: connect to DAO for loging
         //(MainActivity.this).loadData(this);
@@ -99,9 +101,14 @@ public class MainActivity extends AppCompatActivity {
         create_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(MainActivity.this, CreateLoginActivity.class);
-                //startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, CreateAccount.class);
+                startActivity(intent);
             }
         });
+    }
+
+    public static Intent getIntent(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        return intent;
     }
 }
