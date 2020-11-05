@@ -9,7 +9,6 @@ import android.os.Bundle;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
 
 
 import com.example.frugalfoodie.DB.UserDAO;
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 /**A loop to check if user is logging in,if log in is successful user will be taken to the main menu of app */
                 if(user1 != null)
                 {
-                   Intent intent = new Intent(MainActivity.this, DummyClass.class);
+                   Intent intent = new Intent(MainActivity.this, LandingPage.class);
                    startActivity(intent);
                 }
                 else if(!is_true){
