@@ -54,7 +54,7 @@ public abstract class FFRoom extends RoomDatabase {
     private void loadUsers(Context context){
         UserDAO dao = FFRoom.getInstance(context).userDAO();
         User user1 = new User( "Link", "Link4");
-        dao.addUser(user1);
+        dao.insertUser(user1);
         Log.d("FFRoom", "4 Users added to database");
     }
 
