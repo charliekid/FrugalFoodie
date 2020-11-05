@@ -5,7 +5,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
+/** A class to check conectivity for now can delete later */
     public class DummyClass extends AppCompatActivity {
 
         TextView hallo;

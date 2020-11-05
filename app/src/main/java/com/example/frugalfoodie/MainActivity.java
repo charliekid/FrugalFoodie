@@ -25,11 +25,9 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    /**Variables needed for usernames and passwords */
-    public static String username= "";
+    /**Variables needed for admin log in */
     public static final String admin_user = "Admin";
     public static final String admin_password = "Admin";
-
 
 
     @Override
@@ -39,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
 
         Button login_button = findViewById(R.id.loginbutton_main);
 
+      /** Loading Data from UserDAO with all users so that code can check if Username is in dao */
        FFRoom.getInstance(MainActivity.this).loadData(this);
 
         login_button.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
 
@@ -63,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                    // is_true= true;
                // }
 
-                //TODO: Connect to DAO for USER + USER PAGE TO SEARCH
+                //TODO: Connect to USER PAGE TO SEARCH
                 UserDAO dao = FFRoom.getInstance(MainActivity.this).userDAO();
                 User user1 = dao.loginUser(username, password);
 
@@ -79,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            //Closes alert Dialog after okay clicked
+                            /** Closes alert Dialog after okay clicked */
                         }
                     });
                     AlertDialog dialog = builder.create();
