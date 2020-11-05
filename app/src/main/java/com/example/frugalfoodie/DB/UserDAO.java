@@ -1,15 +1,22 @@
 package com.example.frugalfoodie.DB;
 
 import androidx.room.Dao;
+
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+
 import java.util.List;
 
 @Dao
 public interface UserDAO {
+
+
+    @Query("select * from userTable where username =:username and password=:password ")
+    User loginUser(String username, String password);
+
     /**
      * Insert an user into the database
      * @param user
@@ -51,5 +58,6 @@ public interface UserDAO {
      */
     @Query("SELECT * FROM userTable where username LIKE :search")
     User getUserWithUsername(String search);
+
 
 }
