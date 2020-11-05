@@ -1,18 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#A6CFD5"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+           />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:text="Welcome Frugal Foodie!"
+        android:textColor="#F56476"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Please login to proceed by entering in a correct username and password. " />
+
+    <EditText
+        android:id="@+id/username_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="USERNAME"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/password_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="PASSWORD"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/loginbutton_main"
+        android:layout_width="273dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|fill_vertical"
+
+
+        android:text="Login"
+        android:textColor="#DBFCFF" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:text="   " />
+
+    <Button
+        android:id="@+id/create_login_button"
+        android:layout_width="273dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|fill_vertical"
+
+
+        android:text="CREATE ACCOUNT"
+        android:textColor="#DBFCFF" />
+
+</LinearLayout>
