@@ -29,7 +29,7 @@ public class CreateAccount extends AppCompatActivity {
     }
 
     /**
-     * This method launches the Signup Activity.
+     * This method launches the CreateAccount Activity.
      * @param context
      * @return an intent
      */
@@ -85,7 +85,7 @@ public class CreateAccount extends AppCompatActivity {
                 activityCreateAccountBinding.createAccountUsername.setError("Username is already taken.");
             }
             if (!isPasswordValid) {
-                activityCreateAccountBinding.createAccountPassword.setError("Password must be 8 characters long. There must be at least 3 letters and 2 numbers.");
+                activityCreateAccountBinding.createAccountPassword.setError("Password must meet complexity requirements.");
             }
         }
     }
