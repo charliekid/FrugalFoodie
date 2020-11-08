@@ -12,19 +12,24 @@ public class Ingredient {
     @PrimaryKey(autoGenerate = true)
     private int ingredientId;
     private double price;
-    private int quantity;
+    private int quantity;       // is it 1 item? 3 items? is it 4 lbs?
+    private String unit;        // is it lbs, each etc
+
 
     /**
      * Constructor
      * @param ingredientId - int got ingredient id
      * @param price - double for price
      * @param quantity - int for quantity
+     * @param unit - String representing lbs, each, etc
      */
-    public Ingredient(int ingredientId, double price, int quantity) {
+    public Ingredient(int ingredientId, double price, int quantity, String unit) {
         this.ingredientId = ingredientId;
         this.price = price;
         this.quantity = quantity;
     }
+
+
 
     /**
      * Ingredient id getter
@@ -72,5 +77,21 @@ public class Ingredient {
      */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    /**
+     * Unit getter
+     * @return String representing the unit of the ingredient
+     */
+    public String getUnit() {
+        return unit;
+    }
+
+    /**
+     * Unit Setter
+     * @param unit - the unit of the of the item (lbs, each)
+     */
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 }
