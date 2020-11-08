@@ -11,6 +11,7 @@ public class Ingredient {
 
     @PrimaryKey(autoGenerate = true)
     private int ingredientId;
+    private String itemName;
     private double price;
     private int quantity;
 
@@ -20,8 +21,9 @@ public class Ingredient {
      * @param price - double for price
      * @param quantity - int for quantity
      */
-    public Ingredient(int ingredientId, double price, int quantity) {
+    public Ingredient(int ingredientId, String itemName, double price, int quantity) {
         this.ingredientId = ingredientId;
+        this.itemName = itemName;
         this.price = price;
         this.quantity = quantity;
     }
@@ -40,6 +42,22 @@ public class Ingredient {
      */
     public void setIngredientId(int ingredientId) {
         this.ingredientId = ingredientId;
+    }
+
+    /**
+     * Item name getter
+     * @return String - for item name
+     */
+    public String getItemName() {
+        return itemName;
+    }
+
+    /**
+     * Item name setter
+     * @param itemName - String for item name
+     */
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
     /**
