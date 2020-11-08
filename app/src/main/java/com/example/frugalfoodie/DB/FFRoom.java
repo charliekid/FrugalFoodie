@@ -9,8 +9,12 @@ import androidx.room.Room;
 public abstract class FFRoom extends RoomDatabase {
 
     private static FFRoom instance;
-    public abstract UserDAO userDAO();
     public static final String DB = "FrugalFoodieDB";
+
+    /** DAOs */
+    public abstract UserDAO userDAO();
+    public abstract RecipeDAO recipeDAO();
+    public abstract IngredientDAO ingredientDAO();
 
     /**
      * Tables
