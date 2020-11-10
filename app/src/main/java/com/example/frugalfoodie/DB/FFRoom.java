@@ -2,10 +2,13 @@ package com.example.frugalfoodie.DB;
 
 import android.content.Context;
 import android.util.Log;
-
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 import androidx.room.Room;
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
+
+import com.example.frugalfoodie.DB.TypeConverter.DataConverter;
 
 import com.example.frugalfoodie.webscrape.SalesFileHandler;
 
@@ -14,6 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Database(entities = {User.class, Recipe.class, Ingredient.class}, version =1)
+@TypeConverters(DataConverter.class)
 public abstract class FFRoom extends RoomDatabase {
 
     private static FFRoom instance;
@@ -66,8 +70,6 @@ public abstract class FFRoom extends RoomDatabase {
         dao.insertUser(user1);
         Log.d("FFRoom", "4 Users added to database");
     }
-
-
     /**
      * Loads the ingredients into the database
      * @param context
@@ -83,8 +85,4 @@ public abstract class FFRoom extends RoomDatabase {
             iDao.insertIngredient(ingredientsIterator.next());
         }
     }
-
-
-
-
 }
