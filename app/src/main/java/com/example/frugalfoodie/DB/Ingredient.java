@@ -1,6 +1,7 @@
 package com.example.frugalfoodie.DB;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 /**
@@ -14,6 +15,7 @@ public class Ingredient {
     private String itemName;
     private double price;
     private int quantity;
+    private String unit;
 
     /**
      * Constructor
@@ -21,11 +23,27 @@ public class Ingredient {
      * @param price - double for price
      * @param quantity - int for quantity
      */
+    @Ignore
     public Ingredient(int ingredientId, String itemName, double price, int quantity) {
         this.ingredientId = ingredientId;
         this.itemName = itemName;
         this.price = price;
         this.quantity = quantity;
+    }
+
+    /**
+     * Other constructor. I wonder if this is allowed
+     * @param itemName - the name of the ingredient
+     * @param price - the price of the ingredient
+     * @param quantity - how many items in the ingredient
+     * @param unit - String representing lbs, each, etc.
+     */
+    public Ingredient(String itemName, double price, int quantity, String unit) {
+        this.itemName = itemName;
+        this.ingredientId = ingredientId;
+        this.price = price;
+        this.quantity = quantity;
+        this.unit = unit;
     }
 
     /**
@@ -90,5 +108,22 @@ public class Ingredient {
      */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+
+    /**
+     * Unit getter
+     * @return unit - String of the unit
+     */
+    public String getUnit() {
+        return unit;
+    }
+
+    /**
+     * Unit Setter
+     * @param unit - String representing lbs, each, etc.
+     */
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 }

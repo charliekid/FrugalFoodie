@@ -7,6 +7,10 @@ import androidx.room.Database;
 import androidx.room.RoomDatabase;
 import androidx.room.Room;
 
+import com.example.frugalfoodie.webscrape.SalesFileHandler;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Database(entities = {User.class, Recipe.class, Ingredient.class}, version =1)
@@ -51,6 +55,7 @@ public abstract class FFRoom extends RoomDatabase {
         {
             Log.d("FFRoom", "loading data");
             loadUsers(context);
+            loadIngredients(context);
 
         }
     }
@@ -60,6 +65,23 @@ public abstract class FFRoom extends RoomDatabase {
         User user1 = new User( "Link", "Link4");
         dao.insertUser(user1);
         Log.d("FFRoom", "4 Users added to database");
+    }
+
+
+    /**
+     * Loads the ingredients into the database
+     * @param context
+     */
+    private void loadIngredients(Context context) {
+        IngredientDAO iDao = FFRoom.getInstance(context).ingredientDAO();
+        List ingredientList = new ArrayList<Ingredient>();
+
+        // Reads in the data file we have with the weekly sale information
+        SalesFileHandler.readSalesFile("weeklysale.txt", ingredientList);
+        Iterator<Ingredient> ingredientsIterator = ingredientList.iterator();
+        while(ingredientsIterator.hasNext()) {
+            iDao.insertIngredient(ingredientsIterator.next());
+        }
     }
 
 
