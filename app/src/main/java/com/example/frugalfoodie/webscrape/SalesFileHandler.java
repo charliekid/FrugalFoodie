@@ -92,6 +92,5 @@ public class SalesFileHandler {
         } catch (NumberFormatException nfe) {
             System.out.println("ERROR in NumberFormatException file hanlder " + nfe.getMessage());
         }
-
     }
 }
