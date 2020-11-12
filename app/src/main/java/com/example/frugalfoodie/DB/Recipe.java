@@ -1,10 +1,9 @@
 package com.example.frugalfoodie.DB;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class for creating recipe object
@@ -13,18 +12,18 @@ import java.util.List;
 public class Recipe {
 
     @PrimaryKey(autoGenerate = true)
-    private int recipeID;
+    private int recipeId;
     private String recipeName;
     private String directions;
-    private ArrayList<Ingredient> ingredientList = new ArrayList<>();
+    private ArrayList<String> ingredientList = new ArrayList<>();
 
     /**
      * Constructor
-     * @param recipeID - int for recipeId
+     * @param recipeName - String for name
      * @param directions - String for directions
+     * @param ingredientList - Arraylist for ingredient list
      */
-    public Recipe(int recipeID, String recipeName, String directions, ArrayList<Ingredient> ingredientList) {
-        this.recipeID = recipeID;
+    public Recipe(String recipeName, String directions, ArrayList<String> ingredientList) {
         this.recipeName = recipeName;
         this.directions = directions;
         this.ingredientList = ingredientList;
@@ -34,16 +33,16 @@ public class Recipe {
      * Recipe Id getter
      * @return int - for user id
      */
-    public int getRecipeID() {
-        return recipeID;
+    public int getRecipeId() {
+        return recipeId;
     }
 
     /**
      * Recipe Id setter
-     * @param recipeID - int for recipe id
+     * @param recipeId - int for recipe id
      */
-    public void setRecipeID(int recipeID) {
-        this.recipeID = recipeID;
+    public void setRecipeId(int recipeId) {
+        this.recipeId = recipeId;
     }
 
     /**
@@ -80,9 +79,9 @@ public class Recipe {
 
     /**
      * Ingredient List getter
-     * @return String for ingredient list
+     * @return Json for ingredient list
      */
-    public ArrayList<Ingredient> getIngredientList() {
+    public ArrayList<String> getIngredientList() {
         return ingredientList;
     }
 }
