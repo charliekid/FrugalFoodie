@@ -35,6 +35,10 @@ public abstract class FFRoom extends RoomDatabase {
     public static final String RECIPE_TABLE = "recipeTable";
     public static final String INGREDIENT_TABLE = "ingredientTable";
 
+
+    // Used for LogCat
+    private String TAG = "FFROOM_TAG";
+
     /**
      * Get app database
      * @param context to context
@@ -80,6 +84,7 @@ public abstract class FFRoom extends RoomDatabase {
 
         // Reads in the data file we have with the weekly sale information
         SalesFileHandler.readSalesFile("weeklysale.txt", ingredientList);
+        Log.d(TAG,"ingredientList size = " + ingredientList.size());
         Iterator<Ingredient> ingredientsIterator = ingredientList.iterator();
         while(ingredientsIterator.hasNext()) {
             iDao.insertIngredient(ingredientsIterator.next());
