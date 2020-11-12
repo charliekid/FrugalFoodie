@@ -21,4 +21,7 @@ public interface IngredientDAO {
 
     @Query("SELECT * FROM ingredientTable")
     List<Ingredient> getAllIngredients();
+
+    @Query("DELETE FROM ingredientTable")
+    void deleteAllIngredients();
 }

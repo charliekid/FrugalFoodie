@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@Database(entities = {User.class, Recipe.class, Ingredient.class}, version =2)
+@Database(entities = {User.class, Recipe.class, Ingredient.class}, version =1)
 @TypeConverters(DataConverter.class)
 public abstract class FFRoom extends RoomDatabase {
 
