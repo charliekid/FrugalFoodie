@@ -16,6 +16,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+// Citation: https://www.java67.com/2014/06/how-to-format-float-or-double-number-java-example.html
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.IngredientViewHolder> {
     private List<Ingredient> ingredients = new ArrayList<>();
     private ItemIngredientBinding itemIngredientBinding;
@@ -38,7 +39,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
         DecimalFormat decimalFormat = new DecimalFormat("##.##");
         Ingredient currentIngredient = ingredients.get(position);
         itemIngredientBinding.ingredientCheckbox.setText(currentIngredient.getItemName());
-        itemIngredientBinding.ingredientPrice.setText(decimalFormat.format(currentIngredient.getPrice()));
+        itemIngredientBinding.ingredientPrice.setText("$" + String.format("%.2f", currentIngredient.getPrice()));
     }
 
     @Override
