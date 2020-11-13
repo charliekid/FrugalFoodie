@@ -8,14 +8,12 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 import androidx.room.Room;
-import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
+
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.frugalfoodie.DB.TypeConverter.DataConverter;
-
 import com.example.frugalfoodie.webscrape.SalesFileHandler;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -96,5 +94,16 @@ public abstract class FFRoom extends RoomDatabase {
             iDao.insertIngredient(ingredientsIterator.next());
         }
         Log.d(TAG, "ingredients loaded from load ingredients");
+    }
+
+    private void loadRecipes(Context context) {
+        RecipeDAO rDao = FFRoom.getInstance(context).recipeDAO();
+
+        ArrayList<String> ingredient = new ArrayList<>();
+        ingredient.add("Tomato");
+        ingredient.add("Steak");
+        ingredient.add("Bell Pepper");
+        Recipe recipe1 = new Recipe("Steak Fajitas", "Steps", ingredient);
+        rDao.addRecipe(recipe1);
     }
 }
