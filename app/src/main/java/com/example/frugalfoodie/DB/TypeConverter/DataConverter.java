@@ -1,6 +1,8 @@
 package com.example.frugalfoodie.DB.TypeConverter;
 
 import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
+
 import com.example.frugalfoodie.DB.Ingredient;
 import java.io.Serializable;
 import java.lang.reflect.Type;
@@ -12,27 +14,17 @@ import com.google.gson.reflect.TypeToken;
 public class DataConverter implements Serializable {
 
     @TypeConverter
-    public String fromList(ArrayList<Ingredient> ingredientList){
-        if(ingredientList == null){
-            return (null);
-        }
-        Gson gson = new Gson();
-        Type type = new TypeToken<ArrayList<Ingredient>>(){
-        }.getType();
-        String json = gson.toJson(ingredientList, type);
-            return json;
+    public static ArrayList<String> fromString(String value) {
+        Type listType = new TypeToken<ArrayList<String>>(){}.getType();
+        return new Gson().fromJson(value, listType);
     }
 
     @TypeConverter
-    public ArrayList<Ingredient> toList(String ingredientListString){
-        if (ingredientListString == null){
-            return (null);
-        }
+    public static String fromArrayList(ArrayList<String> list) {
         Gson gson = new Gson();
-        Type type = new TypeToken<List<Ingredient>>(){
-        }.getType();
-        ArrayList<Ingredient> productList = gson.fromJson(ingredientListString, type);
-        return productList;
+        String json = gson.toJson(list);
+        return json;
     }
+
 }
 

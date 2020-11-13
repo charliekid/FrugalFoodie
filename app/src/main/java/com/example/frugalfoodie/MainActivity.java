@@ -19,11 +19,15 @@ import com.example.frugalfoodie.DB.User;
 import androidx.appcompat.app.AlertDialog;
 
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
+
+    // Used for LogCat
+    private String TAG = "MAIN_ACTIVITY_TAG";
 
     /**Variables needed for admin log in */
     public static final String admin_user = "Admin";
@@ -34,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Log.d(TAG, "Inside of main activity");
 
 
         Button login_button = findViewById(R.id.loginbutton_main);
