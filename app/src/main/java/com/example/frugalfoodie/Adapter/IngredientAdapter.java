@@ -4,6 +4,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,16 +19,15 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-// Citation: https://www.java67.com/2014/06/how-to-format-float-or-double-number-java-example.html
+// Citation:
+// https://www.java67.com/2014/06/how-to-format-float-or-double-number-java-example.html
+// https://stackoverflow.com/questions/51515854/check-all-the-check-boxes-in-recycler-view
+// https://stackoverflow.com/questions/33434626/get-list-of-checked-checkboxes-from-recyclerview-android
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.IngredientViewHolder> {
-    private List<Ingredient> ingredients = new ArrayList<>();
-    private List<Ingredient> checkedIngredients = new ArrayList<>();
+    private List<Ingredient> ingredients;
+    private List<Ingredient> checkedIngredients;
     private ItemIngredientBinding itemIngredientBinding;
 
-    public interface onClickListener {
-        void onItemChecked(Ingredient ingredient);
-        void onItemUnchecked(Ingredient ingredient);
-    }
 
     public IngredientAdapter(ArrayList<Ingredient> ingredients, ArrayList<Ingredient> checkedIngredients) {
         this.ingredients = ingredients;
@@ -45,19 +46,20 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
     public void onBindViewHolder(@NonNull IngredientViewHolder holder, int position) {
         final Ingredient currentIngredient = ingredients.get(position);
         itemIngredientBinding.ingredientCheckbox.setText(currentIngredient.getItemName());
-        itemIngredientBinding.ingredientCheckbox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (itemIngredientBinding.ingredientCheckbox.isChecked()) {
-                    checkedIngredients.add(currentIngredient);
-                    Log.d("checked ingredient", "adding " + currentIngredient.toString());
+        itemIngredientBinding.ingredientCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    if (b) {
+                        checkedIngredients.add(currentIngredient);
+                        Log.d("checked ingredient", "adding " + currentIngredient.toString());
 
-                } else {
-                    checkedIngredients.remove(currentIngredient);
-                    Log.d("checked ingredient", "removing " + currentIngredient.toString());
+                    } else {
+                        checkedIngredients.remove(currentIngredient);
+                        Log.d("checked ingredient", "removing " + currentIngredient.toString());
+                    }
+
                 }
-            }
-        });
+            });
         itemIngredientBinding.ingredientPrice.setText("$" + String.format("%.2f", currentIngredient.getPrice()));
 
     }
