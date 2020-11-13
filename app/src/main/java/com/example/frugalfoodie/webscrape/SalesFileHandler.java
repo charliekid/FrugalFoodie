@@ -27,19 +27,7 @@ public class SalesFileHandler {
 
 
     public void readSalesFile(String filename, List saleList) {
-        //String absolutePath = "/Users/charliekid/PycharmProjects/FrugalFoodieWebscrape/SaleItems.txt";
         AssetManager assetManger = mContext.getAssets();
-
-        // In order to reach file I do this
-        // if anyone knows a better way let me know because I built
-        // this method like 3 years ago and just have been reusing it.
-        //String workingDirectory = System.getProperty("user.dir");
-        //Log.d(TAG, workingDirectory + " work directory");
-        //String absolutePath = workingDirectory + "\\src\\" + filename;
-        //String absolutePath = "weeklysale.txt";
-        //String updatedAbsolutePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/webscrape/" + filename;
-        //Log.d(TAG, "absolute path is " + absolutePath);
-        //Log.d(TAG, "new path? = " + updatedAbsolutePath);
 
         //Open FileReader and BufferReader
         FileReader fileReader = null;
@@ -59,9 +47,6 @@ public class SalesFileHandler {
             System.exit(0);
         }
 
-//        // Lets process the data
-//        inputStream = new BufferedReader(fileReader);
-//
         // The data we will be storing
         String itemName;
         double itemPrice = 0.0;
@@ -72,9 +57,7 @@ public class SalesFileHandler {
         // NumberFormatException. And because of .readLine() also throws IOException.
         try {
             String lineOfData;
-//            Log.d(TAG, "Right before the while .readLine()");
             while((lineOfData = inputStream.readLine()) != null) {
-//                Log.d(TAG, "Inside of while .readLine()");
                 String[] saleInfo = lineOfData.split(";");
                 itemName = saleInfo[0];
 
