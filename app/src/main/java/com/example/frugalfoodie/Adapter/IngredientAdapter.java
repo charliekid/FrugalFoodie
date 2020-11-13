@@ -23,6 +23,7 @@ import java.util.List;
 // https://www.java67.com/2014/06/how-to-format-float-or-double-number-java-example.html
 // https://stackoverflow.com/questions/51515854/check-all-the-check-boxes-in-recycler-view
 // https://stackoverflow.com/questions/33434626/get-list-of-checked-checkboxes-from-recyclerview-android
+// https://stackoverflow.com/questions/33316837/how-to-prevent-items-from-getting-duplicated-when-scrolling-recycler-view
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.IngredientViewHolder> {
     private List<Ingredient> ingredients;
     private List<Ingredient> checkedIngredients;
@@ -69,6 +70,16 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
         return ingredients.size();
     }
 
+    // getItemId and getItemViewType will prevent recyclerView from duplicating ingredient items
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
 
     class IngredientViewHolder extends RecyclerView.ViewHolder {
 
