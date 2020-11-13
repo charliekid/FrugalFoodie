@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(TAG, "Inside of main activity");
 
+
         Button login_button = findViewById(R.id.loginbutton_main);
 
       /** Loading Data from UserDAO with all users so that code can check if Username is in dao */

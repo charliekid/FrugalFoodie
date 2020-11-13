@@ -1,12 +1,16 @@
 package com.example.frugalfoodie.DB;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 import androidx.room.Room;
 import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.frugalfoodie.DB.TypeConverter.DataConverter;
 
@@ -37,7 +41,7 @@ public abstract class FFRoom extends RoomDatabase {
 
 
     // Used for LogCat
-    private String TAG = "FFROOM_TAG";
+    public static final String TAG = "FFROOM_TAG";
 
     /**
      * Get app database
@@ -59,13 +63,16 @@ public abstract class FFRoom extends RoomDatabase {
 
     public void loadData(Context context){
         List<User> user_list = FFRoom.getInstance(context).userDAO().getAllUsers();
-        if(user_list.size() ==0)
-        {
+        List<Ingredient> ingredientsList = FFRoom.getInstance(context).ingredientDAO().getAllIngredients();
+        Log.d(TAG, "the size of the ingreidentList at beginiing of load data" + ingredientsList.size());
+        if(user_list.size() ==0) {
             Log.d("FFRoom", "loading data");
             loadUsers(context);
-            loadIngredients(context);
-
         }
+        if(ingredientsList.size() == 0) {
+            loadIngredients(context);
+        }
+
     }
 
     private void loadUsers(Context context){
@@ -81,13 +88,13 @@ public abstract class FFRoom extends RoomDatabase {
     private void loadIngredients(Context context) {
         IngredientDAO iDao = FFRoom.getInstance(context).ingredientDAO();
         List ingredientList = new ArrayList<Ingredient>();
-
+        SalesFileHandler salesFileHandler = new SalesFileHandler(context);
         // Reads in the data file we have with the weekly sale information
-        SalesFileHandler.readSalesFile("weeklysale.txt", ingredientList);
-        Log.d(TAG,"ingredientList size = " + ingredientList.size());
+        salesFileHandler.readSalesFile("weeklysale.txt", ingredientList);
         Iterator<Ingredient> ingredientsIterator = ingredientList.iterator();
         while(ingredientsIterator.hasNext()) {
             iDao.insertIngredient(ingredientsIterator.next());
         }
+        Log.d(TAG, "ingredients loaded from load ingredients");
     }
 }
