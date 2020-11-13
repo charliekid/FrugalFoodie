@@ -31,8 +31,8 @@ public class SearchIngredients extends AppCompatActivity {
         checkedIngredients = new ArrayList<>();
 
 
-        //TODO: Delete after we read in weeklysale.txt
-        insertIngredients();
+//        //TODO: Delete after we read in weeklysale.txt
+//        insertIngredients();
 
         Log.d("ingredient", String.valueOf(db.ingredientDAO().getAllIngredients().size()));
         for (Ingredient ingredient: db.ingredientDAO().getAllIngredients()) {
@@ -57,8 +57,8 @@ public class SearchIngredients extends AppCompatActivity {
         });
 
 
-        // TODO: Delete after we read in weeklysale.txt
-        db.ingredientDAO().deleteAllIngredients();
+//        // TODO: Delete after we read in weeklysale.txt
+//        db.ingredientDAO().deleteAllIngredients();
     }
 
     private void insertIngredients() {
