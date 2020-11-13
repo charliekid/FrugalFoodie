@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class SearchIngredients extends AppCompatActivity {
 
     private FFRoom db;
+    private ArrayList<Ingredient> checkedIngredients;
     private ActivitySearchIngredientsBinding activitySearchIngredientsBinding;
 
     @Override
@@ -27,6 +28,7 @@ public class SearchIngredients extends AppCompatActivity {
         setContentView(view);
 
         db = FFRoom.getInstance(getApplicationContext());
+        checkedIngredients = new ArrayList<>();
 
 
         //TODO: Delete after we read in weeklysale.txt
@@ -38,9 +40,22 @@ public class SearchIngredients extends AppCompatActivity {
         }
 
         ArrayList<Ingredient> allIngredients = (ArrayList<Ingredient>) db.ingredientDAO().getAllIngredients();
-        IngredientAdapter adapter = new IngredientAdapter(allIngredients);
+        IngredientAdapter adapter = new IngredientAdapter(allIngredients, checkedIngredients);
+
+
         activitySearchIngredientsBinding.ingredientRecyclerView.setAdapter(adapter);
         activitySearchIngredientsBinding.ingredientRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        activitySearchIngredientsBinding.searchIngredientsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("checked ingredient", "LIST OF INGREDIENTS THAT HAVE BEEN CHECKED");
+                Log.d("checked ingredient", String.valueOf(checkedIngredients.size()));
+                for (Ingredient ingredient: checkedIngredients) {
+                    Log.d("checked ingredient", ingredient.toString());
+                }
+            }
+        });
+
 
         // TODO: Delete after we read in weeklysale.txt
         db.ingredientDAO().deleteAllIngredients();
@@ -49,5 +64,11 @@ public class SearchIngredients extends AppCompatActivity {
     private void insertIngredients() {
         db.ingredientDAO().insertIngredient(new Ingredient("Haas Avacados", 5.0, 4, "na"));
         db.ingredientDAO().insertIngredient(new Ingredient("Red or Green Seedless Grapes", 1.0, 1, "lb."));
+        db.ingredientDAO().insertIngredient(new Ingredient("IngredientC", 1.0, 1, "lb."));
+        db.ingredientDAO().insertIngredient(new Ingredient("IngredientD", 1.0, 1, "lb."));
+        db.ingredientDAO().insertIngredient(new Ingredient("IngredientE", 1.0, 1, "lb."));
+        db.ingredientDAO().insertIngredient(new Ingredient("IngredientF", 1.0, 1, "lb."));
+        db.ingredientDAO().insertIngredient(new Ingredient("IngredientG", 1.0, 1, "lb."));
+        db.ingredientDAO().insertIngredient(new Ingredient("IngredientH", 1.0, 1, "lb."));
     }
 }

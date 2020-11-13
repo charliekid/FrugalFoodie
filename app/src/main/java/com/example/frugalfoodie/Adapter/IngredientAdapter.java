@@ -1,5 +1,6 @@
 package com.example.frugalfoodie.Adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,17 @@ import java.util.List;
 // Citation: https://www.java67.com/2014/06/how-to-format-float-or-double-number-java-example.html
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.IngredientViewHolder> {
     private List<Ingredient> ingredients = new ArrayList<>();
+    private List<Ingredient> checkedIngredients = new ArrayList<>();
     private ItemIngredientBinding itemIngredientBinding;
-    private FFRoom db;
 
-    public IngredientAdapter(ArrayList<Ingredient> ingredients) {
+    public interface onClickListener {
+        void onItemChecked(Ingredient ingredient);
+        void onItemUnchecked(Ingredient ingredient);
+    }
+
+    public IngredientAdapter(ArrayList<Ingredient> ingredients, ArrayList<Ingredient> checkedIngredients) {
         this.ingredients = ingredients;
+        this.checkedIngredients = checkedIngredients;
     }
     @NonNull
     @Override
@@ -36,10 +43,23 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
 
     @Override
     public void onBindViewHolder(@NonNull IngredientViewHolder holder, int position) {
-        DecimalFormat decimalFormat = new DecimalFormat("##.##");
-        Ingredient currentIngredient = ingredients.get(position);
+        final Ingredient currentIngredient = ingredients.get(position);
         itemIngredientBinding.ingredientCheckbox.setText(currentIngredient.getItemName());
+        itemIngredientBinding.ingredientCheckbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (itemIngredientBinding.ingredientCheckbox.isChecked()) {
+                    checkedIngredients.add(currentIngredient);
+                    Log.d("checked ingredient", "adding " + currentIngredient.toString());
+
+                } else {
+                    checkedIngredients.remove(currentIngredient);
+                    Log.d("checked ingredient", "removing " + currentIngredient.toString());
+                }
+            }
+        });
         itemIngredientBinding.ingredientPrice.setText("$" + String.format("%.2f", currentIngredient.getPrice()));
+
     }
 
     @Override
