@@ -1,9 +1,7 @@
 package com.example.frugalfoodie.DB;
 
-import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import java.util.ArrayList;
 
 /**
  * Class for creating recipe object
@@ -14,19 +12,19 @@ public class Recipe {
     @PrimaryKey(autoGenerate = true)
     private int recipeId;
     private String recipeName;
+    private String ingredientList;
     private String directions;
-    private ArrayList<String> ingredientList = new ArrayList<>();
 
     /**
      * Constructor
      * @param recipeName - String for name
+     * @param ingredientList - String for ingredient list
      * @param directions - String for directions
-     * @param ingredientList - Arraylist for ingredient list
      */
-    public Recipe(String recipeName, String directions, ArrayList<String> ingredientList) {
+    public Recipe(String recipeName, String ingredientList, String directions) {
         this.recipeName = recipeName;
-        this.directions = directions;
         this.ingredientList = ingredientList;
+        this.directions = directions;
     }
 
     /**
@@ -79,9 +77,17 @@ public class Recipe {
 
     /**
      * Ingredient List getter
-     * @return Json for ingredient list
+     * @return String for ingredient list
      */
-    public ArrayList<String> getIngredientList() {
+    public String getIngredientList() {
         return ingredientList;
+    }
+
+    /**
+     * Ingredient List setter
+     * @param ingredientList - String for ingredient list
+     */
+    public void setIngredientList(String ingredientList){
+        this.ingredientList = ingredientList;
     }
 }
