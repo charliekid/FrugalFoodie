@@ -21,7 +21,7 @@
 
     <TextView
         android:id="@+id/ingredientPrice"
-        android:layout_width="100dp"
+        android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:text="$1.00"
