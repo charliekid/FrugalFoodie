@@ -71,6 +71,16 @@ Notes:
 ***
 ## Iteration 2 ()
 
+**User Story**: View All Ingredients (from the ads) - Cathy
+> As a user I want to search weekly store ads so I can accomplish searching for a recipe based off of sale items.
+
+**How will it be tested**:
+- [x] This is a UI. No test required.
+
+Notes: 
+- Front End - RecyclerView
+***
+
 ## Iteration 3 ()
 
 ## Iteration 4 ()
@@ -119,16 +129,6 @@ Notes:
 
 Notes: 
 - Backend
-***
-
-**User Story**: View All Ingredients (from the ads) - Cathy
-> As a user I want to search weekly store ads so I can accomplish searching for a recipe based off of sale items.
-
-**How will it be tested**:
-- [ ] This is a UI. No test required.
-
-Notes: 
-- Front End - RecyclerView
 ***
 
 **User Story**: Search By Ingredients (from the ads) - Charlie
