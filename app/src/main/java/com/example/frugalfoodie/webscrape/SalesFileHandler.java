@@ -1,6 +1,11 @@
 package com.example.frugalfoodie.webscrape;
 
 //Needed for BufferedReader to read in a text file
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.os.Environment;
+import android.util.Log;
+
 import com.example.frugalfoodie.DB.Ingredient;
 
 import java.io.BufferedReader;
@@ -8,34 +13,39 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
 public class SalesFileHandler {
-    public static void readSalesFile(String filename, List saleList) {
-        //String absolutePath = "/Users/charliekid/PycharmProjects/FrugalFoodieWebscrape/SaleItems.txt";
+    public static final String TAG = "SALES_FILE_HANDLER_TAG";
+    private Context mContext;
 
-        // In order to reach file I do this
-        // if anyone knows a better way let me know because I built
-        // this method like 3 years ago and just have been reusing it.
-        String workingDirectory = System.getProperty("user.dir");
-        System.out.println(workingDirectory + " work directory");
-        String absolutePath = workingDirectory + "\\src\\" + filename;
+    public SalesFileHandler(Context context) {
+        this.mContext = context;
+    }
+
+
+    public void readSalesFile(String filename, List saleList) {
+        AssetManager assetManger = mContext.getAssets();
 
         //Open FileReader and BufferReader
         FileReader fileReader = null;
         BufferedReader inputStream = null;
 
         try {
-            fileReader = new FileReader(absolutePath);
-            System.out.println("File read");
+            InputStream is = assetManger.open(filename);
+            inputStream = new BufferedReader(new InputStreamReader(is));
+            Log.d(TAG, "File read");
         } catch(FileNotFoundException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Exiting Program");
+            Log.d(TAG, e.getMessage());
+            Log.d(TAG, "Exiting Program");
+            System.exit(0);
+        } catch(IOException ioe) {
+            Log.d(TAG, ioe.getMessage());
+            Log.d(TAG, "Exiting Program");
             System.exit(0);
         }
-
-        // Lets process the data
-        inputStream = new BufferedReader(fileReader);
 
         // The data we will be storing
         String itemName;
@@ -48,7 +58,6 @@ public class SalesFileHandler {
         try {
             String lineOfData;
             while((lineOfData = inputStream.readLine()) != null) {
-
                 String[] saleInfo = lineOfData.split(";");
                 itemName = saleInfo[0];
 
@@ -68,7 +77,7 @@ public class SalesFileHandler {
                     }
                     // Processing weird (30% off) sales or similar. Lets worry about this later
                 } else if (saleInfo[1].contains("OFF")) {
-                    System.out.println("There is a % off and we are skipping this!");
+                    Log.d(TAG, "There is a % off and we are skipping this!");
                     itemName = "SKIP";
                     // Processing ($.88 lbs) or ($1 each)
                 } else if (saleInfo[1].contains(" ")) {
@@ -88,9 +97,9 @@ public class SalesFileHandler {
             }
             inputStream.close();
         } catch (IOException ioe) {
-            System.out.println("ERROR in IOException file handler " + ioe.getMessage());
+            Log.d(TAG, "ERROR in IOException file handler " + ioe.getMessage());
         } catch (NumberFormatException nfe) {
-            System.out.println("ERROR in NumberFormatException file hanlder " + nfe.getMessage());
+            Log.d(TAG, "ERROR in NumberFormatException file hanlder " + nfe.getMessage());
         }
     }
 }
