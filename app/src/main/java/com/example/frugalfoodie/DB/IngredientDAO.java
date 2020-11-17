@@ -24,4 +24,7 @@ public interface IngredientDAO {
 
     @Query("SELECT * FROM " + FFRoom.INGREDIENT_TABLE)
     List<Ingredient> getAllIngredients();
+
+    @Query("DELETE FROM ingredientTable")
+    void deleteAllIngredients();
 }
