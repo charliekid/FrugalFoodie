@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:gravity="center"
-        android:text="Title Text"
+        android:text="@string/titleText"
         android:textColor="#0A0A0A"
         android:textColorHint="#FFFFFF"
         android:textSize="25sp"
@@ -26,14 +26,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/ingredientsTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="INGREDIENTS"
+                android:text="@string/ingredientTitle"
                 android:textColor="#0A0A0A"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -42,16 +42,14 @@
                 android:id="@+id/ingredientsText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/ingredientsTitle"
-                android:text="IngredientsText" />
+                android:text="@string/ingredientsText" />
 
             <TextView
                 android:id="@+id/instructionsTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/ingredientsText"
                 android:layout_marginTop="8dp"
-                android:text="INSTRUCTIONS"
+                android:text="@string/instructionsTitle"
                 android:textColor="#0B0B0B"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -60,10 +58,23 @@
                 android:id="@+id/instructionsText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/instructionsTitle"
-                android:text="instructionsText" />
+                android:text="@string/instructionsText" />
 
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="766dp"
+        android:layout_marginEnd="168dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/button_home" />
 
 </RelativeLayout>
