@@ -81,7 +81,7 @@ Notes:
 - Front End - RecyclerView
 ***
 
-**User Story**: Hard Code Recipes 
+**User Story**: Hard Code Initial Recipes - Debbie
 > Add recipes to the Database
 
 **How will it be tested**:
