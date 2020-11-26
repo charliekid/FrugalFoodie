@@ -45,20 +45,20 @@
                 android:text="@string/ingredientsText" />
 
             <TextView
-                android:id="@+id/instructionsTitle"
+                android:id="@+id/directionsTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/instructionsTitle"
+                android:text="@string/directionsTitle"
                 android:textColor="#0B0B0B"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/instructionsText"
+                android:id="@+id/directionsText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/instructionsText" />
+                android:text="@string/directionsText" />
 
         </LinearLayout>
     </ScrollView>

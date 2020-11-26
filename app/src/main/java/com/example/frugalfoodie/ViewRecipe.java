@@ -2,7 +2,7 @@ package com.example.frugalfoodie;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -26,6 +26,18 @@ public class ViewRecipe extends AppCompatActivity {
 
         title = findViewById(R.id.titleText);
         ingredients = findViewById(R.id.ingredientsText);
-        directions = findViewById(R.id.instructionsText);
+        directions = findViewById(R.id.directionsText);
+
+        // Passed Data: Get intents from ViewRecipes
+        Intent intent = getIntent();
+        String aTitle = intent.getStringExtra("title");
+        String aIngredient = intent.getStringExtra("ingredients");
+        String aDirection = intent.getStringExtra("directions");
+
+        title.setText(aTitle);
+        ingredients.setText(aIngredient);
+        directions.setText(aDirection);
+
+        actionBar.setTitle(aTitle);
     }
 }
