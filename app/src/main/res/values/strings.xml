@@ -15,6 +15,6 @@
     <string name="button_home">Home</string>
     <string name="ingredientTitle">INGREDIENTS</string>
     <string name="ingredientsText">IngredientsText</string>
-    <string name="instructionsTitle">INSTRUCTIONS</string>
-    <string name="instructionsText">InstructionsText</string>
+    <string name="directionsTitle">DIRECTIONS</string>
+    <string name="directionsText">DirectionsText</string>
 </resources>
