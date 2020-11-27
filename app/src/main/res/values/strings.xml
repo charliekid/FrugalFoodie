@@ -17,4 +17,5 @@
     <string name="ingredientsText">IngredientsText</string>
     <string name="directionsTitle">DIRECTIONS</string>
     <string name="directionsText">DirectionsText</string>
+    <string name="upload_recipe_title">Upload Recipe</string>
 </resources>
