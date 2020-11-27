@@ -18,4 +18,7 @@
     <string name="directionsTitle">DIRECTIONS</string>
     <string name="directionsText">DirectionsText</string>
     <string name="upload_recipe_title">Upload Recipe</string>
+    <string name="upload_recipe_ingredients">Ingredients</string>
+    <string name="upload_recipe_directions">Directions</string>
+    <string name="upload_recipe_button_text">Upload</string>
 </resources>
