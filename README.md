@@ -81,6 +81,16 @@ Notes:
 - Front End - RecyclerView
 ***
 
+**User Story**: Hard Code Initial Recipes - Debbie
+> Add recipes to the Database
+
+**How will it be tested**:
+- [ ] Create a test where we get recipes from the database 
+
+Notes: 
+- Backend
+***
+
 ## Iteration 3 ()
 
 ## Iteration 4 ()
@@ -100,7 +110,7 @@ Notes:
 - RecyclerView
 ***
 
-**User Story**: View Individual Recipes
+**User Story**: View Individual Recipes - Debbie
 > As a user I want to view a specific recipe after search so I can view the directions for the recipe.
 
 **How will it be tested**:

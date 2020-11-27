@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
             Button upload = findViewById(R.id.upload);
 
-            Button search = findViewById(R.id.search);
+            Button search = findViewById(R.id.search );
 
             upload.setOnClickListener(new View.OnClickListener() {
                 @Override

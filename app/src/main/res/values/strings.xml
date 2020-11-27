@@ -11,4 +11,10 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="titleText">Title Text</string>
+    <string name="button_home">Home</string>
+    <string name="ingredientTitle">INGREDIENTS</string>
+    <string name="ingredientsText">IngredientsText</string>
+    <string name="directionsTitle">DIRECTIONS</string>
+    <string name="directionsText">DirectionsText</string>
 </resources>

@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                    // is_true= true;
                // }
 
-                //TODO: Connect to USER PAGE TO SEARCH
+
                 UserDAO dao = FFRoom.getInstance(MainActivity.this).userDAO();
                 User user1 = dao.loginUser(username, password);
 
