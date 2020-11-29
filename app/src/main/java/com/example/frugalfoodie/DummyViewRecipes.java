@@ -16,7 +16,7 @@ import java.util.List;
 public class DummyViewRecipes extends AppCompatActivity {
 
     private String TAG = "DUMMY_ACTIVITY_TAG";
-    private ArrayList<Recipe> recipes;
+    private List<Recipe> recipes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,20 +25,23 @@ public class DummyViewRecipes extends AppCompatActivity {
 
         RecipeDAO rDao = FFRoom.getInstance(DummyViewRecipes.this).recipeDAO();
         TextView dummyTextView = (TextView) findViewById(R.id.dummyTextView);
+        recipes = new ArrayList<>();
 
         //TODO: Pre filing this checkedIngredientList but should be passed in from SearchIngredients Page
         List<String> checkedIngredientList = new ArrayList<>();
-        checkedIngredientList.add("Celery");
+        checkedIngredientList.add("celery");
 
         for(String checkedItem : checkedIngredientList) {
             // TODO: We need to account if there are two words like 'rib steak'
             List<Recipe> foundRecipes = rDao.searchForRecipeByIngredient(checkedItem);
-            for(Recipe aRecipe : foundRecipes) {
-                recipes.add(aRecipe);
-                Log.d(TAG, "Added: " + aRecipe.getRecipeName());
-            }
+            dummyTextView.setText("\nfound recipe size " + foundRecipes.size());
+//            for(Recipe aRecipe : foundRecipes) {
+//                recipes.add(aRecipe);
+//                //Log.d(TAG, "Added: " + aRecipe.getRecipeName());
+//            }
         }
 //        Log.d(TAG, "size of recipe list: " + recipes.size());
-        dummyTextView.setText("recipe size " + recipes.size());
+          dummyTextView.append("\ntotal recipe size " + recipes.size());
+//        dummyTextView.setText("checked Ingredeint size " + checkedIngredientList.size());
     }
 }
