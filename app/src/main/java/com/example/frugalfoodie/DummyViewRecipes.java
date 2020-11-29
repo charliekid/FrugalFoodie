@@ -29,19 +29,35 @@ public class DummyViewRecipes extends AppCompatActivity {
 
         //TODO: Pre filing this checkedIngredientList but should be passed in from SearchIngredients Page
         List<String> checkedIngredientList = new ArrayList<>();
-        checkedIngredientList.add("celery");
+        //checkedIngredientList.add("celery");
+        checkedIngredientList.add("Italian meatballs");
 
         for(String checkedItem : checkedIngredientList) {
-            // TODO: We need to account if there are two words like 'rib steak'
-            List<Recipe> foundRecipes = rDao.searchForRecipeByIngredient(checkedItem);
-            dummyTextView.setText("\nfound recipe size " + foundRecipes.size());
-//            for(Recipe aRecipe : foundRecipes) {
-//                recipes.add(aRecipe);
-//                //Log.d(TAG, "Added: " + aRecipe.getRecipeName());
-//            }
+            // We need to account if there are two words like 'rib steak'
+            if(checkedItem.contains(" ")) {
+                String[] splitArray = checkedItem.split(" ");
+                for(int i = 0; i < splitArray.length; i++) {
+                    searchDbForRecipe(splitArray[i], rDao, recipes);
+                }
+            } else {
+                searchDbForRecipe(checkedItem, rDao, recipes);
+            }
         }
 //        Log.d(TAG, "size of recipe list: " + recipes.size());
-          dummyTextView.append("\ntotal recipe size " + recipes.size());
-//        dummyTextView.setText("checked Ingredeint size " + checkedIngredientList.size());
+          dummyTextView.setText("\ntotal recipe size " + recipes.size());
+    }
+
+    /**
+     * This method will search the DB for the recipe and insert into the a List of recipes
+     * @param ingredientName - String that represents what will be searched in the DB
+     * @param rDao - the DAO that we will be using to search
+     * @param recipes - the list of recipes, in which the found recipes from the db will be
+     *                  inserted in. 
+     */
+    void searchDbForRecipe(String ingredientName, RecipeDAO rDao, List<Recipe> recipes) {
+        List<Recipe> foundRecipes = rDao.searchForRecipeByIngredient(ingredientName);
+        for(Recipe aRecipe : foundRecipes) {
+            recipes.add(aRecipe);
+        }
     }
 }
