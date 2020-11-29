@@ -258,5 +258,12 @@ public abstract class FFRoom extends RoomDatabase {
                         "2. Pour the beef broth, worcestershire sauce, garlic powder, and onion powder into a slow cooker and stir together. Place the short ribs into the liquid in the slow cooker. " +
                         "3. (https://bit.ly/36IJPQ0)");
         rDao.addRecipe(recipe25);
+
+        // Charlie added this. So I can demo the delete function on the admin page
+        Recipe recipe26 = new Recipe("Delete This Recipe (1)", "None", "None");
+        rDao.addRecipe(recipe26);
+
+        Recipe recipe27 = new Recipe("Delete This Recipe (2)", "None", "None");
+        rDao.addRecipe(recipe27);
     }
 }

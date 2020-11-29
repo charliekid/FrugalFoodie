@@ -17,4 +17,13 @@ public interface RecipeDAO {
 
     @Query("SELECT * FROM recipeTable WHERE recipeId =:recipeId")
     Recipe getRecipeById(int recipeId);
+
+    @Query("SELECT recipeName FROM recipeTable")
+    List<String> getAllRecipeTitles();
+
+    @Query("SELECT * FROM recipeTable WHERE recipeName =:recipeName")
+    Recipe getRecipeByName(String recipeName);
+
+    @Query("DELETE FROM recipeTable WHERE recipeName =:recipeName")
+    void deleteRecipeByName(String recipeName);
 }
