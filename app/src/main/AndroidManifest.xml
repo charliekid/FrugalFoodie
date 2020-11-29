@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UploadRecipe"></activity>
+        <activity android:name=".Admin.AdminDeleteRecipeActivity"></activity>
+        <activity android:name=".Admin.AdminMenuActivity" />
+        <activity android:name=".UploadRecipe" />
         <activity android:name=".ViewRecipe" />
         <activity android:name=".SearchIngredients" />
         <activity android:name=".CreateAccount" />
