@@ -18,8 +18,11 @@ import android.widget.TextView;
 
 import com.example.frugalfoodie.DB.FFRoom;
 import com.example.frugalfoodie.DB.RecipeDAO;
+import com.example.frugalfoodie.DummyViewRecipes;
+import com.example.frugalfoodie.LandingPage;
 import com.example.frugalfoodie.MainActivity;
 import com.example.frugalfoodie.R;
+import com.example.frugalfoodie.ViewRecipes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +30,7 @@ import java.util.List;
 public class AdminMenuActivity extends AppCompatActivity {
 
     Button deleteRecipeButton;
+    Button dummyButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +38,20 @@ public class AdminMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_menu);
 
         deleteRecipeButton = (Button) findViewById(R.id.deleteRecipeButton);
+        dummyButton = (Button) findViewById(R.id.dummyButton);
 
         deleteRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(AdminDeleteRecipeActivity.getIntent(AdminMenuActivity.this));
+            }
+        });
+        dummyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //startActivity(ViewRecipes.getIntent(AdminMenuActivity.this));
+                Intent intent = new Intent(AdminMenuActivity.this, DummyViewRecipes.class);
+                startActivity(intent);
             }
         });
     }
