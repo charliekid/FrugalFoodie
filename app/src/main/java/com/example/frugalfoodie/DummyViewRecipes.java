@@ -52,7 +52,7 @@ public class DummyViewRecipes extends AppCompatActivity {
      * @param ingredientName - String that represents what will be searched in the DB
      * @param rDao - the DAO that we will be using to search
      * @param recipes - the list of recipes, in which the found recipes from the db will be
-     *                  inserted in. 
+     *                  inserted in.
      */
     void searchDbForRecipe(String ingredientName, RecipeDAO rDao, List<Recipe> recipes) {
         List<Recipe> foundRecipes = rDao.searchForRecipeByIngredient(ingredientName);
