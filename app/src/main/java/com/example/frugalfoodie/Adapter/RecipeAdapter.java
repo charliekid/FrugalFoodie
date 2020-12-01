@@ -21,51 +21,51 @@ import java.util.List;
 // https://stackoverflow.com/questions/33316837/how-to-prevent-items-from-getting-duplicated-when-scrolling-recycler-view
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
-        private List<Recipe> recipes;
-        private ActivityViewRecipesBinding viewRecipeBinding;
+    private List<Recipe> recipes;
+    private ActivityViewRecipesBinding viewRecipeBinding;
 
 
-        public RecipeAdapter(ArrayList<Recipe> allRecipes, ArrayList<Recipe> recipes) {
-            this.recipes = recipes;
-        }
-        @NonNull
-        @Override
-        public RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            viewRecipeBinding = viewRecipeBinding.inflate(inflater);
-            View view = viewRecipeBinding.getRoot();
-            return new RecipeViewHolder(view);
-        }
+    public RecipeAdapter(List<String> getAllRecipeTitles, List<Recipe> recipes) {
+        this.recipes = recipes;
+    }
+    @NonNull
+    @Override
+    public RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        viewRecipeBinding = viewRecipeBinding.inflate(inflater);
+        View view = viewRecipeBinding.getRoot();
+        return new RecipeViewHolder(view);
+    }
 
 
     @Override
-        public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
-            final Recipe currentRecipe = recipes.get(position);
-           // viewRecipeBinding.recipeCheckbox.setText(currentRecipe.getRecipeName());
+    public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
+        final Recipe currentRecipe = recipes.get(position);
+        // viewRecipeBinding.recipeCheckbox.setText(currentRecipe.getRecipeName());
 
-        }
+    }
 
-        @Override
-        public int getItemCount() {
-            return recipes.size();
-        }
+    @Override
+    public int getItemCount() {
+        return recipes.size();
+    }
 
-        // getItemId and getItemViewType will prevent recyclerView from duplicating ingredient items
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
+    // getItemId and getItemViewType will prevent recyclerView from duplicating ingredient items
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 
-        @Override
-        public int getItemViewType(int position) {
-            return position;
-        }
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
 
 
     class RecipeViewHolder extends RecyclerView.ViewHolder {
 
-            public RecipeViewHolder(@NonNull View itemView) {
-                super(itemView);
-            }
+        public RecipeViewHolder(@NonNull View itemView) {
+            super(itemView);
         }
     }
+}

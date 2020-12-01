@@ -7,7 +7,7 @@
     tools:context=".SearchIngredients">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ingredientRecyclerView"
+        android:id="@+id/RecipeRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toBottomOf="@+id/RecipeRecyclerView"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbars="vertical"
-        />
+        tools:ignore="NotSibling" />
 
     <TextView
         android:id="@+id/RecipeRecyclerView"
@@ -33,6 +33,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="NotSibling" />
+        tools:ignore="DuplicateIds,NotSibling" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
