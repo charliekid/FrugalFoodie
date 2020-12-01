@@ -28,6 +28,8 @@ public class ViewRecipes extends AppCompatActivity {
         setContentView(view);
 
         db = FFRoom.getInstance(getApplicationContext());
+        recipes = new ArrayList<>();
+
 
 
         List<String> allRecipes =  db.recipeDAO().getAllRecipeTitles();
