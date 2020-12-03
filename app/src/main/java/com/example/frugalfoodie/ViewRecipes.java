@@ -32,7 +32,7 @@ public class ViewRecipes extends AppCompatActivity {
 
         Log.d("Recipe", "All recipes");
         for (Recipe recipe: recipes) {
-            Log.d("Recipe", recipe.toString());
+            Log.d("Recipe", recipe.getRecipeName());
         }
         RecipeAdapter adapter = new RecipeAdapter(recipes);
 
