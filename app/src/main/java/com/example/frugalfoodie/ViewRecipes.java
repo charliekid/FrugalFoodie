@@ -15,6 +15,7 @@ import com.example.frugalfoodie.databinding.ActivityViewRecipesBinding;
 import java.util.ArrayList;
 import java.util.List;
 
+// Citation: for item_recipe xml https://singhajit.com/android-padding-vs-margin/
 public class ViewRecipes extends AppCompatActivity {
     private FFRoom db;
     private List<Recipe> recipes;
