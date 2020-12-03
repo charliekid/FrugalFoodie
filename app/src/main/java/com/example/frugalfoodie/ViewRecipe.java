@@ -6,8 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.frugalfoodie.DB.FFRoom;
+import com.example.frugalfoodie.DB.Ingredient;
+
 public class ViewRecipe extends AppCompatActivity {
 
+    private FFRoom db;
     TextView title;
     TextView ingredients;
     TextView directions;
@@ -16,6 +20,8 @@ public class ViewRecipe extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_recipe);
+
+        db = FFRoom.getInstance(getApplicationContext());
 
         //ActionBar
         ActionBar actionBar = getSupportActionBar();
@@ -29,6 +35,7 @@ public class ViewRecipe extends AppCompatActivity {
         directions = findViewById(R.id.directionsText);
 
         // Passed Data: Get intents from ViewRecipes
+        getRecipe();
         Intent intent = getIntent();
         String aTitle = intent.getStringExtra("title");
         String aIngredient = intent.getStringExtra("ingredients");
@@ -40,4 +47,10 @@ public class ViewRecipe extends AppCompatActivity {
 
         actionBar.setTitle(aTitle);
     }
+
+    private void getRecipe() {
+        db.recipeDAO().getRecipeById(1);
+    }
+
+
 }
