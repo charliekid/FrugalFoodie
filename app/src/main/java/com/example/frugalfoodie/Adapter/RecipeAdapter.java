@@ -25,7 +25,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     private ActivityViewRecipesBinding viewRecipeBinding;
 
 
-    public RecipeAdapter(List<String> getAllRecipeTitles, List<Recipe> recipes) {
+    public RecipeAdapter(List<Recipe> recipes) {
         this.recipes = recipes;
     }
     @NonNull
