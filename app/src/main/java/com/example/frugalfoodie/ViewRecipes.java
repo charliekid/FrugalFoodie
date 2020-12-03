@@ -29,6 +29,11 @@ public class ViewRecipes extends AppCompatActivity {
 
         db = FFRoom.getInstance(getApplicationContext());
         recipes = db.recipeDAO().getAllRecipes();
+
+        Log.d("Recipe", "All recipes");
+        for (Recipe recipe: recipes) {
+            Log.d("Recipe", recipe.toString());
+        }
         RecipeAdapter adapter = new RecipeAdapter(recipes);
 
 
