@@ -2,6 +2,8 @@ package com.example.frugalfoodie;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ public class ViewRecipe extends AppCompatActivity {
     TextView title;
     TextView ingredients;
     TextView directions;
+    private static final String RECIPE_ID= "recipe_id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,12 @@ public class ViewRecipe extends AppCompatActivity {
 
     private void getRecipe() {
         db.recipeDAO().getRecipeById(1);
+    }
+
+    public static Intent getIntent(Context context, int recipeId) {
+        Intent intent = new Intent(context, ViewRecipe.class);
+        intent.putExtra(RECIPE_ID, recipeId);
+        return intent;
     }
 
 

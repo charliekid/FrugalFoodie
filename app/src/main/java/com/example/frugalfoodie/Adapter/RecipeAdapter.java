@@ -1,5 +1,6 @@
 package com.example.frugalfoodie.Adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.frugalfoodie.DB.Recipe;
 
+import com.example.frugalfoodie.ViewRecipe;
 import com.example.frugalfoodie.databinding.ActivityViewRecipesBinding;
 import com.example.frugalfoodie.databinding.ItemRecipesBinding;
 
@@ -43,6 +45,13 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
         final Recipe currentRecipe = recipes.get(position);
         itemRecipeBinding.recipeTitle.setText(currentRecipe.getRecipeName());
+        itemRecipeBinding.recipeTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = ViewRecipe.getIntent(view.getContext(), currentRecipe.getRecipeId());
+                view.getContext().startActivity(intent);
+            }
+        });
 
     }
 
@@ -51,7 +60,6 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         return recipes.size();
     }
 
-    // getItemId and getItemViewType will prevent recyclerView from duplicating ingredient items
     @Override
     public long getItemId(int position) {
         return position;
