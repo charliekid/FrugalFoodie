@@ -22,5 +22,5 @@
     <string name="upload_recipe_directions">Directions</string>
     <string name="upload_recipe_button_text">Upload</string>
     <string name="delete_recipe_button_text">Delete Recipe</string>
-    <string name="title_text"></string>
+    <string name="title_text">title</string>
 </resources>

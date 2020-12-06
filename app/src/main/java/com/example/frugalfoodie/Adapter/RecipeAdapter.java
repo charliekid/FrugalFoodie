@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.frugalfoodie.DB.Recipe;
 
+import com.example.frugalfoodie.LandingPage;
+import com.example.frugalfoodie.R;
 import com.example.frugalfoodie.ViewRecipe;
 import com.example.frugalfoodie.databinding.ActivityViewRecipesBinding;
 import com.example.frugalfoodie.databinding.ItemRecipesBinding;
@@ -27,7 +29,6 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     private List<Recipe> recipes;
     private ItemRecipesBinding itemRecipeBinding;
 
-
     public RecipeAdapter(List<Recipe> recipes) {
         this.recipes = recipes;
     }
@@ -42,7 +43,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
 
     @Override
-    public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecipeViewHolder holder, final int position) {
         final Recipe currentRecipe = recipes.get(position);
         itemRecipeBinding.recipeTitle.setText(currentRecipe.getRecipeName());
         itemRecipeBinding.recipeTitle.setOnClickListener(new View.OnClickListener() {

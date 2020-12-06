@@ -13,7 +13,8 @@
         <activity android:name=".Admin.AdminDeleteRecipeActivity" />
         <activity android:name=".Admin.AdminMenuActivity" />
         <activity android:name=".UploadRecipe" />
-        <activity android:name=".ViewRecipe" />
+        <activity android:name=".ViewRecipe"
+            android:parentActivityName=".ViewRecipes" />
         <activity android:name=".ViewRecipes" />
         <activity android:name=".SearchIngredients" />
         <activity android:name=".CreateAccount" />

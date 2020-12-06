@@ -2,63 +2,57 @@ package com.example.frugalfoodie;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
 
+import com.example.frugalfoodie.Adapter.RecipeAdapter;
 import com.example.frugalfoodie.DB.FFRoom;
-import com.example.frugalfoodie.DB.Ingredient;
+import com.example.frugalfoodie.DB.Recipe;
+import com.example.frugalfoodie.databinding.ActivityViewRecipeBinding;
+
+import java.util.ArrayList;
 
 public class ViewRecipe extends AppCompatActivity {
 
     private FFRoom db;
-    TextView title;
-    TextView ingredients;
-    TextView directions;
+    private int recipe_id;
     private static final String RECIPE_ID= "recipe_id";
+    private ActivityViewRecipeBinding activityViewRecipeBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_recipe);
-
-        db = FFRoom.getInstance(getApplicationContext());
+        activityViewRecipeBinding = ActivityViewRecipeBinding.inflate(getLayoutInflater());
+        View view = activityViewRecipeBinding.getRoot();
+        setContentView(view);
 
         //ActionBar
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setDisplayShowHomeEnabled(true);
         }
 
-        title = findViewById(R.id.titleText);
-        ingredients = findViewById(R.id.ingredientsText);
-        directions = findViewById(R.id.directionsText);
-
-        // Passed Data: Get intents from ViewRecipes
-        getRecipe();
         Intent intent = getIntent();
-        String aTitle = intent.getStringExtra("title");
-        String aIngredient = intent.getStringExtra("ingredients");
-        String aDirection = intent.getStringExtra("directions");
+        recipe_id = intent.getIntExtra(RECIPE_ID, -1);
+        db = FFRoom.getInstance(getApplicationContext());
+        final Recipe recipe = db.recipeDAO().getRecipeById(recipe_id);
 
-        title.setText(aTitle);
-        ingredients.setText(aIngredient);
-        directions.setText(aDirection);
+        activityViewRecipeBinding.titleText.setText(recipe.getRecipeName());
+        activityViewRecipeBinding.ingredientsText.setText(recipe.getIngredientList());
+        activityViewRecipeBinding.directionsText.setText(recipe.getDirections());
 
-        actionBar.setTitle(aTitle);
-    }
-
-    private void getRecipe() {
-        db.recipeDAO().getRecipeById(1);
     }
 
     public static Intent getIntent(Context context, int recipeId) {
         Intent intent = new Intent(context, ViewRecipe.class);
         intent.putExtra(RECIPE_ID, recipeId);
         return intent;
+
     }
 
 
