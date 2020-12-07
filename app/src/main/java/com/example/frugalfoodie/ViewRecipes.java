@@ -22,8 +22,9 @@ import java.util.List;
 // Citation: for item_recipe xml https://singhajit.com/android-padding-vs-margin/
 public class ViewRecipes extends AppCompatActivity {
     private FFRoom db;
+    private ArrayList<Integer> recipeIds;
     private List<Recipe> recipes;
-    private static final String RECIPES = "recipes";
+    private static final String RECIPE_IDS = "recipe_ids";
     private ActivityViewRecipesBinding activityViewRecipesBinding;
 
     @Override
@@ -33,44 +34,46 @@ public class ViewRecipes extends AppCompatActivity {
         View view = activityViewRecipesBinding.getRoot();
         setContentView(view);
 
+//        Intent intent = getIntent();
+//        recipeIds = (ArrayList<Integer>) intent.getSerializableExtra(RECIPE_IDS);
+//        Log.d("Recipe", recipeIds.get(0).toString());
         db = FFRoom.getInstance(getApplicationContext());
         RecipeDAO rDao = db.recipeDAO();
         //recipes = db.recipeDAO().getAllRecipes();
 
         // TODO: Get the intent's check ingredients list
-        ArrayList<Ingredient> checkedIngredientsList = new ArrayList<>();
-        for(Ingredient ingredientItem : checkedIngredientsList) {
-            String checkedItem = ingredientItem.getItemName();
-            // We need to account if there are two words like 'rib steak'
-            if(checkedItem.contains(" ")) {
-                String[] splitArray = checkedItem.split(" ");
-                for(int i = 0; i < splitArray.length; i++) {
-                    searchDbForRecipe(splitArray[i], rDao, recipes);
-                }
-            } else {
-                searchDbForRecipe(checkedItem, rDao, recipes);
-            }
-        }
-
-        Log.d("Recipe", "All recipes");
-        for (Recipe recipe: recipes) {
-            Log.d("Recipe", recipe.getRecipeName());
-        }
-        RecipeAdapter adapter = new RecipeAdapter(recipes);
-
-
-        activityViewRecipesBinding.RecipeRecyclerView.setAdapter(adapter);
-        activityViewRecipesBinding.RecipeRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        ArrayList<Ingredient> checkedIngredientsList = new ArrayList<>();
+//        for(Ingredient ingredientItem : checkedIngredientsList) {
+//            String checkedItem = ingredientItem.getItemName();
+//            // We need to account if there are two words like 'rib steak'
+//            if(checkedItem.contains(" ")) {
+//                String[] splitArray = checkedItem.split(" ");
+//                for(int i = 0; i < splitArray.length; i++) {
+//                    searchDbForRecipe(splitArray[i], rDao, recipes);
+//                }
+//            } else {
+//                searchDbForRecipe(checkedItem, rDao, recipes);
+//            }
+//        }
+//
+//        Log.d("Recipe", "All recipes");
+//        for (Recipe recipe: recipes) {
+//            Log.d("Recipe", recipe.getRecipeName());
+//        }
+//        RecipeAdapter adapter = new RecipeAdapter(recipes);
+//
+//
+//        activityViewRecipesBinding.RecipeRecyclerView.setAdapter(adapter);
+//        activityViewRecipesBinding.RecipeRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
 
     }
 
-    public static Intent getIntent(Context context, ArrayList<Integer> recipes) {
+    public static Intent getIntent(Context context, ArrayList<Integer> passedRecipeIds) {
         Intent intent = new Intent(context, ViewRecipes.class);
-        intent.putExtra(RECIPES, recipes);
-        ArrayList<Integer> recipeIds = (ArrayList<Integer>) intent.getSerializableExtra(RECIPES);
-        Log.d("Recipe", recipeIds.get(0).toString());
+        intent.putExtra(RECIPE_IDS, passedRecipeIds);
+
         return intent;
 
     }
