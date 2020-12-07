@@ -35,8 +35,8 @@ public class ViewRecipes extends AppCompatActivity {
         setContentView(view);
 
 //        Intent intent = getIntent();
-//        recipeIds = (ArrayList<Integer>) intent.getSerializableExtra(RECIPE_IDS);
-//        Log.d("Recipe", recipeIds.get(0).toString());
+        recipeIds = (ArrayList<Integer>) getIntent().getSerializableExtra(RECIPE_IDS);
+        Log.d("Recipe", recipeIds.get(0).toString());
         db = FFRoom.getInstance(getApplicationContext());
         RecipeDAO rDao = db.recipeDAO();
         //recipes = db.recipeDAO().getAllRecipes();
