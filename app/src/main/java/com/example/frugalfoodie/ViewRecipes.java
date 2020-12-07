@@ -3,6 +3,8 @@ package com.example.frugalfoodie;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +23,7 @@ import java.util.List;
 public class ViewRecipes extends AppCompatActivity {
     private FFRoom db;
     private List<Recipe> recipes;
+    private static final String RECIPES = "recipes";
     private ActivityViewRecipesBinding activityViewRecipesBinding;
 
     @Override
@@ -60,6 +63,15 @@ public class ViewRecipes extends AppCompatActivity {
         activityViewRecipesBinding.RecipeRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
+
+    }
+
+    public static Intent getIntent(Context context, ArrayList<Integer> recipes) {
+        Intent intent = new Intent(context, ViewRecipes.class);
+        intent.putExtra(RECIPES, recipes);
+        ArrayList<Integer> recipeIds = (ArrayList<Integer>) intent.getSerializableExtra(RECIPES);
+        Log.d("Recipe", recipeIds.get(0).toString());
+        return intent;
 
     }
 
