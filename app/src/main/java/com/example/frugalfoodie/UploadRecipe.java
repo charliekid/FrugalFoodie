@@ -16,6 +16,8 @@ public class UploadRecipe extends AppCompatActivity {
     private ActivityUploadRecipeBinding activityUploadRecipeBinding;
     private FFRoom db;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,23 +27,21 @@ public class UploadRecipe extends AppCompatActivity {
         setContentView(view);
 
 
+
         activityUploadRecipeBinding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                RecipeDAO dao = FFRoom.getInstance(UploadRecipe.this).recipeDAO();
-                Recipe recipe1 = dao.getRecipeByName(recipeName);
-
                 try {
-                    if(recipe1 != null)
-                    {
-                        Toast.makeText(UploadRecipe.this,"Recipe already exists ", Toast.LENGTH_SHORT).show(); // non integer input
-                    }
-                    else {
-                        Recipe recipe = new Recipe(recipeName.getText().toString));
-                       RecipeDAO.addRecipe(recipe);
+                    RecipeDAO dao = FFRoom.getInstance(UploadRecipe.this).recipeDAO();
+                    Recipe recipe1 = dao.getRecipeByName(activityUploadRecipeBinding.RecipeName.toString());
 
-                        Toast.makeText(UploadRecipe.this, recipe.toString(), Toast.LENGTH_SHORT).show();
+                    if (recipe1 == null) {
+                        Recipe recipe = new Recipe(activityUploadRecipeBinding.RecipeName.toString(),activityUploadRecipeBinding.INgredients.toString(),activityUploadRecipeBinding.editTextTextMultiLine.toString());
+                        dao.addRecipe(recipe);
+                        Toast.makeText(UploadRecipe.this, recipe.toString() + "Has been added.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(UploadRecipe.this, "Recipe name is already being used", Toast.LENGTH_SHORT).show();
                     }
 
                 } /**A catch if there is invaild input */
