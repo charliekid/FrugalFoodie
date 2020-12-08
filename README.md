@@ -93,6 +93,16 @@ Notes:
 
 ## Iteration 3 ()
 
+**User Story**: View Individual Recipes - Debbie
+> As a user I want to view a specific recipe after search so I can view the directions for the recipe.
+
+**How will it be tested**:
+- [ ] This is a UI. No test required.
+
+Notes: 
+- Displays a particular recipe's information
+***
+
 ## Iteration 4 ()
 
 ## User Stories
@@ -108,16 +118,6 @@ Notes:
 Notes: 
 - All results from the search
 - RecyclerView
-***
-
-**User Story**: View Individual Recipes - Debbie
-> As a user I want to view a specific recipe after search so I can view the directions for the recipe.
-
-**How will it be tested**:
-- [ ] This is a UI. No test required.
-
-Notes: 
-- Displays a particular recipe's information
 ***
 
 **User Story**: View Upload - Emory
