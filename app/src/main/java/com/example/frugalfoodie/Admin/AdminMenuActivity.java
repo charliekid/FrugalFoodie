@@ -38,22 +38,13 @@ public class AdminMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_menu);
 
         deleteRecipeButton = (Button) findViewById(R.id.deleteRecipeButton);
-        dummyButton = (Button) findViewById(R.id.dummyButton);
-
         deleteRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(AdminDeleteRecipeActivity.getIntent(AdminMenuActivity.this));
             }
         });
-        dummyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //startActivity(ViewRecipes.getIntent(AdminMenuActivity.this));
-                Intent intent = new Intent(AdminMenuActivity.this, ViewRecipes.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
     public static Intent getIntent(Context context) {
