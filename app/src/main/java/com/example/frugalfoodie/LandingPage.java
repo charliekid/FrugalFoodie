@@ -37,7 +37,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
         }
 
+        public static Intent getIntent(Context context) {
+            Intent intent = new Intent(context, LandingPage.class);
+            return intent;
         }
+    }
 
 
 
