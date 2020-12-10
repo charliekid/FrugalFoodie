@@ -117,7 +117,7 @@ public class IngredientDAOTest {
         assertEquals("Haas Avocados successfully retrieved", ingredient.getItemName(), ingredientInDatabase.getItemName());
 
         db.ingredientDAO().deleteIngredient(ingredientInDatabase);
-        assertTrue("Haas Avacodos has been successfully deleted",
+        assertTrue("Haas Avocados has been successfully deleted",
                 db.ingredientDAO().getIngredient(EXPECTED_INGREDIENT_NAME) == null);
 
     }
