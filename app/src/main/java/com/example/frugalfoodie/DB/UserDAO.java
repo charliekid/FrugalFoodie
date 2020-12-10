@@ -25,26 +25,6 @@ public interface UserDAO {
     void insertUser(User user);
 
     /**
-     * Update attributes of an user
-     * @param user
-     */
-    @Update
-    void updateUser(User user);
-
-    /**
-     * Delete a user from the database
-     * @param user
-     */
-    @Delete
-    void deleteUser(User user);
-
-    /**
-     * Delete all users from the database
-     */
-    @Query("DELETE FROM userTable")
-    void deleteAllUsers();
-
-    /**
      * Retrieve all users from the database
      * @return a list of all the users in the database
      */
