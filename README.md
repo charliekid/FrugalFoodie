@@ -31,8 +31,8 @@ https://github.com/users/charliekid/projects/1
 > As a user I want to login so I can have my own account
 
 **How will it be tested**:
-- [ ] Unit tests for username verification and password
-- [ ] Instrumented test to verify extras
+- [x] Unit tests for username verification and password
+- [x] Instrumented test to verify extras
 
 Notes: 
 - This is necessary for the rest of the app to function so it is the highest priority
@@ -54,7 +54,7 @@ Notes:
 > Set up the database.
 
 **How will it be tested**:
-- [ ] Create a test where we ensure items are CRUDing on the database. 
+- [x] Create a test where we ensure items are CRUDing on the database.
 
 Notes: 
 - Debbie will set up the skeleton of the DB and Cathy will help with queries / model classes
@@ -64,7 +64,7 @@ Notes:
 > As a user I want to be able to select ingredients that are on sale
 
 **How will it be tested**:
-- [ ] Check against the txt file and ensure data is correct
+- [ ] 
 
 Notes: 
 - Backend
@@ -85,7 +85,7 @@ Notes:
 > Add recipes to the Database
 
 **How will it be tested**:
-- [ ] Create a test where we get recipes from the database 
+- [x] Create a test where we get recipes from the database
 
 Notes: 
 - Backend
@@ -95,7 +95,7 @@ Notes:
 > As a user I want to view recipes after search so I can accomplish picking a recipe I want
 
 **How will it be tested**:
-- [ ] Test to see if when an individual recipe is clicked if individual recipe activity will show
+- [x] This is a UI
 
 Notes:
 - All results from the search
@@ -128,7 +128,7 @@ Notes:
 > As a user I want to view a page where I can upload my own recipe
 
 **How will it be tested**:
-- [ ] This is a UI. No test required.
+- [x] This is a UI. No test required.
 
 Notes:
 - Front end
@@ -139,7 +139,7 @@ Notes:
 > As a user I want to search weekly store ads so I can accomplish searching for a recipe based off of sale items
 
 **How will it be tested**:
-- [ ] DAO test to see if query worked
+- [x] DAO test to see if query worked
 
 Notes:
 ***
@@ -151,7 +151,7 @@ Notes:
 > As a user I want to upload a recipe so I can accomplish sharing my recipe with other users.
 
 **How will it be tested**:
-- [ ] Check to see if the query is working
+- [x] Check to see if the query is working
 
 Notes: 
 - Backend
