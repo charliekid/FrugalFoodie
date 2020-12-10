@@ -39,7 +39,7 @@ public class ViewRecipes extends AppCompatActivity {
         recipes = new ArrayList<>();
         checkedIngredientIds = (ArrayList<Integer>) getIntent().getSerializableExtra(RECIPE_IDS);
         Log.d("Ingredient", checkedIngredientIds.get(0).toString());
-        Log.d("Ingredient size", checkedIngredientIds.size() + "");
+
         db = FFRoom.getInstance(getApplicationContext());
         RecipeDAO rDao = db.recipeDAO();
         IngredientDAO iDao = db.ingredientDAO();
@@ -55,7 +55,11 @@ public class ViewRecipes extends AppCompatActivity {
             if(checkedItem.contains(" ")) {
                 String[] splitArray = checkedItem.split(" ");
                 for(int i = 0; i < splitArray.length; i++) {
-                    searchDbForRecipe(splitArray[i], rDao, recipes);
+                    if(splitArray[i].equals("or")) {
+                        // I know this doesn't look good, but we are gonna skip these words
+                    } else {
+                        searchDbForRecipe(splitArray[i], rDao, recipes);
+                    }
                 }
             } else {
                 searchDbForRecipe(checkedItem, rDao, recipes);
@@ -73,7 +77,7 @@ public class ViewRecipes extends AppCompatActivity {
         activityViewRecipesBinding.RecipeRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-
+        Log.d("Ingredient size recipe", recipes.size() + "");
     }
 
     public static Intent getIntent(Context context, ArrayList<Integer> passedRecipeIds) {
@@ -94,7 +98,13 @@ public class ViewRecipes extends AppCompatActivity {
     void searchDbForRecipe(String ingredientName, RecipeDAO rDao, List<Recipe> recipes) {
         List<Recipe> foundRecipes = rDao.searchForRecipeByIngredient(ingredientName);
         for(Recipe aRecipe : foundRecipes) {
-            recipes.add(aRecipe);
+            if(recipes.contains(aRecipe)) {
+                Log.d("Ingredients already in the list", aRecipe.toString() );
+                // If the recipe is already in the list, we wont add it
+            } else {
+                recipes.add(aRecipe);
+                Log.d("Ingredient adding to recipes", aRecipe.toString());
+            }
         }
     }
 }

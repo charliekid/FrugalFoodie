@@ -3,6 +3,8 @@ package com.example.frugalfoodie.DB;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Objects;
+
 /**
  * Class for creating recipe object
  */
@@ -89,5 +91,30 @@ public class Recipe {
      */
     public void setIngredientList(String ingredientList){
         this.ingredientList = ingredientList;
+    }
+
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "recipeId=" + recipeId +
+                ", recipeName='" + recipeName + '\'' +
+                ", ingredientList='" + ingredientList + '\'' +
+                ", directions='" + directions + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Recipe recipe = (Recipe) o;
+        return Objects.equals(recipeName, recipe.recipeName) &&
+                Objects.equals(ingredientList, recipe.ingredientList) &&
+                Objects.equals(directions, recipe.directions);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(recipeName, ingredientList, directions);
     }
 }
