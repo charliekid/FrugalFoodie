@@ -14,12 +14,12 @@ Eliminating indecisiveness.
 
 ## Project Requirements
 
-- [ ] Must use Git
-- [ ] Must use Git project boards
-- [ ] Must have persistent data
+- [x] Must use Git
+- [x] Must use Git project boards
+- [x] Must have persistent data
 
-- [ ] Multiple access level (e.g. a normal user and an admin user)
-- [ ] Must have a central location to allow users to share information. e.g. if userA logs in and posts a picture, userB should be able to login and view that picture. This can be accomplished by using creating a web API or by using a service like Firebase
+- [x] Multiple access level (e.g. a normal user and an admin user)
+- [x] Must have a central location to allow users to share information. e.g. if userA logs in and posts a picture, userB should be able to login and view that picture. This can be accomplished by using creating a web API or by using a service like Firebase
 
 
 ## Project Board
@@ -91,33 +91,37 @@ Notes:
 - Backend
 ***
 
+**User Story**: View All Recipes - Emory
+> As a user I want to view recipes after search so I can accomplish picking a recipe I want
+
+**How will it be tested**:
+- [ ] Test to see if when an individual recipe is clicked if individual recipe activity will show
+
+Notes:
+- All results from the search
+- RecyclerView
+***
+
+**User Story**: Admin - Charlie
+> As an admin I want to be able to input weekly sales ad into the database so that user can search for new ingredients
+
+**How will it be tested**:
+- [x] If newly sale items are updated on the search by ingredients page
+
+Notes:
+- Only the admin has the ability to input weekly sales
+***
+
 ## Iteration 3 ()
 
 **User Story**: View Individual Recipes - Debbie
 > As a user I want to view a specific recipe after search so I can view the directions for the recipe.
 
 **How will it be tested**:
-- [ ] This is a UI. No test required.
+- [x] This is a UI. No test required.
 
 Notes: 
 - Displays a particular recipe's information
-***
-
-## Iteration 4 ()
-
-## User Stories
-
-
-**User Story**: View All Recipes - Emory
-> As a user I want to view recipes after search so I can accomplish picking a recipe I want
-
-**How will it be tested**:
-- [ ] Test UI for recyclerview (?)
-- [ ] Test to see if when an individual recipe is clicked if individual recipe activity will show
-
-Notes: 
-- All results from the search
-- RecyclerView
 ***
 
 **User Story**: View Upload - Emory
@@ -126,38 +130,31 @@ Notes:
 **How will it be tested**:
 - [ ] This is a UI. No test required.
 
-Notes: 
+Notes:
 - Front end
 - XML so that user can input recipe texts
 ***
 
-**User Story**: Upload Recipe to DAO - Cathy
-> As a user I want to upload a recipe so I can accomplsh sharing my recipe with other users.
+**User Story**: Search By Ingredients (front end) - Cathy
+> As a user I want to search weekly store ads so I can accomplish searching for a recipe based off of sale items
+
+**How will it be tested**:
+- [ ] DAO test to see if query worked
+
+Notes:
+***
+
+
+## Iteration 4 ()
+
+**User Story**: Upload Recipe to DAO - Emory
+> As a user I want to upload a recipe so I can accomplish sharing my recipe with other users.
 
 **How will it be tested**:
 - [ ] Check to see if the query is working
 
 Notes: 
 - Backend
-***
-
-**User Story**: Search By Ingredients (from the ads) - Charlie
-> As a user I want to search weekly store ads so I can accomplish searching for a recipe based off of sale items
-
-**How will it be tested**:
-- [ ] DAO test to see if query worked
-
-Notes: Back end - Recycler View?
-***
-
-**User Story**: Admin - Charlie
-> As an admin I want to be able to input weekly sales ad into the database so that user can search for new ingredients 
-
-**How will it be tested**:
-- [ ] If newly sale items are updated on the search by ingredients page
-
-Notes: 
-- Only the admin has the ability to input weekly sales
 ***
 
 ## Mockups
