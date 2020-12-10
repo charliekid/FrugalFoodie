@@ -12,6 +12,7 @@ import android.view.View;
 import com.example.frugalfoodie.Adapter.RecipeAdapter;
 import com.example.frugalfoodie.DB.FFRoom;
 import com.example.frugalfoodie.DB.Ingredient;
+import com.example.frugalfoodie.DB.IngredientDAO;
 import com.example.frugalfoodie.DB.Recipe;
 import com.example.frugalfoodie.DB.RecipeDAO;
 import com.example.frugalfoodie.databinding.ActivityViewRecipesBinding;
@@ -22,7 +23,7 @@ import java.util.List;
 // Citation: for item_recipe xml https://singhajit.com/android-padding-vs-margin/
 public class ViewRecipes extends AppCompatActivity {
     private FFRoom db;
-    private ArrayList<Integer> recipeIds;
+    private ArrayList<Integer> checkedIngredientIds;
     private List<Recipe> recipes;
     private static final String RECIPE_IDS = "recipe_ids";
     private ActivityViewRecipesBinding activityViewRecipesBinding;
@@ -35,36 +36,41 @@ public class ViewRecipes extends AppCompatActivity {
         setContentView(view);
 
 //        Intent intent = getIntent();
-        recipeIds = (ArrayList<Integer>) getIntent().getSerializableExtra(RECIPE_IDS);
-        Log.d("Recipe", recipeIds.get(0).toString());
+        recipes = new ArrayList<>();
+        checkedIngredientIds = (ArrayList<Integer>) getIntent().getSerializableExtra(RECIPE_IDS);
+        Log.d("Ingredient", checkedIngredientIds.get(0).toString());
+        Log.d("Ingredient size", checkedIngredientIds.size() + "");
         db = FFRoom.getInstance(getApplicationContext());
         RecipeDAO rDao = db.recipeDAO();
+        IngredientDAO iDao = db.ingredientDAO();
         //recipes = db.recipeDAO().getAllRecipes();
 
         // TODO: Get the intent's check ingredients list
-//        ArrayList<Ingredient> checkedIngredientsList = new ArrayList<>();
-//        for(Ingredient ingredientItem : checkedIngredientsList) {
-//            String checkedItem = ingredientItem.getItemName();
-//            // We need to account if there are two words like 'rib steak'
-//            if(checkedItem.contains(" ")) {
-//                String[] splitArray = checkedItem.split(" ");
-//                for(int i = 0; i < splitArray.length; i++) {
-//                    searchDbForRecipe(splitArray[i], rDao, recipes);
-//                }
-//            } else {
-//                searchDbForRecipe(checkedItem, rDao, recipes);
-//            }
-//        }
-//
-//        Log.d("Recipe", "All recipes");
-//        for (Recipe recipe: recipes) {
-//            Log.d("Recipe", recipe.getRecipeName());
-//        }
-//        RecipeAdapter adapter = new RecipeAdapter(recipes);
-//
-//
-//        activityViewRecipesBinding.RecipeRecyclerView.setAdapter(adapter);
-//        activityViewRecipesBinding.RecipeRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //ArrayList<Ingredient> checkedIngredientsList = new ArrayList<>();
+        for(int ingredientItem : checkedIngredientIds) {
+            Ingredient currentIngredient = iDao.getIngredientById(ingredientItem) ;
+            String checkedItem = currentIngredient.getItemName();
+
+            // We need to account if there are two words like 'rib steak'
+            if(checkedItem.contains(" ")) {
+                String[] splitArray = checkedItem.split(" ");
+                for(int i = 0; i < splitArray.length; i++) {
+                    searchDbForRecipe(splitArray[i], rDao, recipes);
+                }
+            } else {
+                searchDbForRecipe(checkedItem, rDao, recipes);
+            }
+        }
+
+        Log.d("Recipe", "All recipes");
+        for (Recipe recipe: recipes) {
+            Log.d("Recipe", recipe.getRecipeName());
+        }
+        RecipeAdapter adapter = new RecipeAdapter(recipes);
+
+
+        activityViewRecipesBinding.RecipeRecyclerView.setAdapter(adapter);
+        activityViewRecipesBinding.RecipeRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
 
