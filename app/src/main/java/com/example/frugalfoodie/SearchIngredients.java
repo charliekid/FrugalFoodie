@@ -3,6 +3,7 @@ package com.example.frugalfoodie;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,7 @@ public class SearchIngredients extends AppCompatActivity {
 
     private FFRoom db;
     private ArrayList<Ingredient> checkedIngredients;
+    private ArrayList<Integer> checkedIngredientsId = new ArrayList<>();
     private ActivitySearchIngredientsBinding activitySearchIngredientsBinding;
 
     @Override
@@ -53,6 +55,17 @@ public class SearchIngredients extends AppCompatActivity {
                 for (Ingredient ingredient: checkedIngredients) {
                     Log.d("checked ingredient", ingredient.toString());
                 }
+
+                Log.d("checked ingredient", "ADDING INGREDIENT IDS");
+                for (Ingredient ingredient: checkedIngredients) {
+                    checkedIngredientsId.add(ingredient.getIngredientId());
+                }
+                Log.d("checked ingredient", "PRINTING INGREDIENT IDS");
+                for (Integer ingredientId: checkedIngredientsId) {
+                    Log.d("checked ingredient id", ingredientId.toString());
+                }
+                Intent intent = ViewRecipes.getIntent(getApplicationContext(), checkedIngredientsId);
+                startActivity(intent);
             }
         });
 

@@ -27,4 +27,7 @@ public interface IngredientDAO {
 
     @Query("DELETE FROM ingredientTable")
     void deleteAllIngredients();
+
+    @Query("SELECT * FROM " + FFRoom.INGREDIENT_TABLE + " WHERE ingredientId =:ingredientId")
+    Ingredient getIngredientById(int ingredientId);
 }
