@@ -1,30 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A6CFD5"
+    android:background="#F9F8F8"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-           />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:scaleX="2"
-        android:scaleY="2"
-        android:text="Welcome Frugal Foodie!"
-        android:textColor="#F56476"
-        android:textSize="18sp" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="346dp"
+        android:layout_height="204dp"
+        android:paddingLeft="70dp"
+        app:srcCompat="@drawable/frugalfoodie" />
 
     <TextView
         android:layout_width="match_parent"
@@ -54,7 +44,7 @@
 
 
         android:text="Login"
-        android:textColor="#DBFCFF" />
+        android:textColor="#353536" />
 
     <TextView
         android:layout_width="match_parent"
@@ -69,6 +59,6 @@
 
 
         android:text="CREATE ACCOUNT"
-        android:textColor="#DBFCFF" />
+        android:textColor="#353636" />
 
 </LinearLayout>

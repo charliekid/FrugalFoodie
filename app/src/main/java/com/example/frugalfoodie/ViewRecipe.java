@@ -45,6 +45,14 @@ public class ViewRecipe extends AppCompatActivity {
         activityViewRecipeBinding.titleText.setText(recipe.getRecipeName());
         activityViewRecipeBinding.ingredientsText.setText(recipe.getIngredientList());
         activityViewRecipeBinding.directionsText.setText(recipe.getDirections());
+        activityViewRecipeBinding.homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(ViewRecipe.this, LandingPage.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
