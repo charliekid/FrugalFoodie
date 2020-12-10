@@ -46,13 +46,13 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     public void onBindViewHolder(@NonNull RecipeViewHolder holder, final int position) {
         final Recipe currentRecipe = recipes.get(position);
         itemRecipeBinding.recipeTitle.setText(currentRecipe.getRecipeName());
-//        itemRecipeBinding.recipeTitle.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = ViewRecipe.getIntent(view.getContext(), currentRecipe.getRecipeId());
-//                view.getContext().startActivity(intent);
-//            }
-//        });
+        itemRecipeBinding.recipeTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = ViewRecipe.getIntent(view.getContext(), currentRecipe.getRecipeId());
+                view.getContext().startActivity(intent);
+            }
+        });
 
     }
 
