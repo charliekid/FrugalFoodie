@@ -13,9 +13,6 @@ public interface RecipeDAO {
     @Insert
     void addRecipe(Recipe recipe);
 
-//    @Query("select * from recipeTable where ingredientList LIKE '%:ingredientName%' ")
-//    List<Recipe> getAllRecipes();
-
     @Query("SELECT * FROM recipeTable")
     List<Recipe> getAllRecipes();
 
