@@ -29,10 +29,12 @@ https://github.com/users/charliekid/projects/1
 
 #### Login
 A login screen is created so that each user can have their own profile to upload their own recipes.
+
 ![Login-Screenshot](img/LoginScreen.jpg)
 
 #### Upload A recipe
 Users are able to upload their own recipes for other users to view.
+
 ![Login-Upload](img/LoginAndUploadRecipe.gif)
 
 #### Ingredient List
