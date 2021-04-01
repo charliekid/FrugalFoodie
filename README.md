@@ -29,7 +29,7 @@ https://github.com/users/charliekid/projects/1
 
 #### Login
 A login screen is created so that each user can have their own profile to upload their own recipes.
-![Login-Screenshot](img/LoginScreen.png)
+![Login-Screenshot](img/LoginScreen.jpg)
 
 #### Upload A recipe
 Users are able to upload their own recipes for other users to view.
@@ -37,14 +37,17 @@ Users are able to upload their own recipes for other users to view.
 
 #### Ingredient List
 This list of ingredients and prices comes from Fraizer Farms. A local grocery store in Oceanside, CA. This information is webscraped with Python and imported into the Android project.
-![Ingredient-List](img/IngredientList.png)
+
+![Ingredient-List](img/IngredientList.jpg)
 
 #### Searching Recipes by Ingredients
 Here is how users will search for a recipe. They will select which ingredients they would like to buy and it will display a list of recipes to choose from.
+
 ![Search-Recipes](img/SearchingByRecipesByIngr.gif)
 
 #### Administrative Login
 An administrative login was created so that an admin can mange the recipes that are in the database.
+
 ![Admin-Login](img/AdminLoginDeleteRecipe.gif)
 
 
